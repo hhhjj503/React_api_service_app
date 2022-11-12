@@ -1,0 +1,19 @@
+[
+  { "id": 1, "name": "서울", "engName": "seoul" },
+  { "id": 2, "name": "부산", "engName": "busan" },
+  { "id": 3, "name": "대구", "engName": "daegu" },
+  { "id": 4, "name": "인천", "engName": "incheon" },
+  { "id": 5, "name": "광주", "engName": "gwangju" },
+  { "id": 6, "name": "대전", "engName": "daejeon" },
+  { "id": 7, "name": "울산", "engName": "ulsan" },
+  { "id": 8, "name": "세종", "engName": "sejong" },
+  { "id": 9, "name": "경기", "engName": "gyeonggi" },
+  { "id": 10, "name": "강원", "engName": "gangwon" },
+  { "id": 11, "name": "충북", "engName": "chungbuk" },
+  { "id": 12, "name": "충남", "engName": "chungnam" },
+  { "id": 13, "name": "전북", "engName": "jeonbuk" },
+  { "id": 14, "name": "전남", "engName": "jeonnam" },
+  { "id": 15, "name": "경북", "engName": "gyeongbuk" },
+  { "id": 16, "name": "경남", "engName": "gyeongnam" },
+  { "id": 17, "name": "제주", "engName": "jeju" }
+]
