@@ -5,13 +5,24 @@ const LabelC = styled.label`
   width: 100%;
   display: block;
   padding: 4px 0px 4px 5px;
+
+  &:hover {
+    background-color: white;
+    cursor: pointer;
+  }
 `;
 
-const Label = (props) => {
-  const onClick = () => {};
-
+const Label = (props, index) => {
   return (
-    <LabelC key={props.key} htmlFor={props.name} onClick={onClick}>
+    <LabelC
+      key={index}
+      htmlFor={props.name}
+      name={props.name}
+      subName={props.subName}
+      engName={props.engName}
+      id={props.id}
+      onClick={(e) => props.onClick(e)}
+    >
       {props.name}
     </LabelC>
   );
