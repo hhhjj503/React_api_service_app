@@ -53,18 +53,18 @@
     "id": 8,
     "name": "인천",
     "subName": "동남부권역",
-    "subDistricts": ["계양구", " 부평구", " 미추홀구", "연수구", "남동구"]
+    "subDistricts": ["계양구", "부평구", "미추홀구", "연수구", "남동구"]
   },
   {
     "id": 9,
     "name": "인천",
-    "subName": "서부역",
+    "subName": "서부권역",
     "subDistricts": ["서구", "중구", "동구"]
   },
   {
     "id": 10,
     "name": "인천",
-    "subName": "영종,영흥권역",
+    "subName": "영종·영흥권역",
     "subDistricts": ["중구", "옹진군"]
   },
 
@@ -102,7 +102,7 @@
     "id": 16,
     "name": "경기",
     "subName": "남부권",
-    "subDistricts": ["용인시", "평택시", "안성시", " 이천시", "여주시"]
+    "subDistricts": ["용인시", "평택시", "안성시", "이천시", "여주시"]
   },
   {
     "id": 17,
@@ -121,7 +121,7 @@
   {
     "id": 18,
     "name": "경기",
-    "subName": "북구권",
+    "subName": "북부권",
     "subDistricts": [
       "김포시",
       "고양시",
@@ -382,19 +382,6 @@
     "name": "경남",
     "subName": "진주권역",
     "subDistricts": ["진주시"]
-  },
-  {
-    "id": 50,
-    "name": "경남",
-    "subName": "창녕권역",
-    "subDistricts": ["창년군"]
-  },
-
-  {
-    "id": 51,
-    "name": "경남",
-    "subName": "창원권역",
-    "subDistricts": ["창원시"]
   },
   {
     "id": 52,

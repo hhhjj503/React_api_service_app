@@ -16,7 +16,7 @@ const FieldsetC = styled.fieldset`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #22223c;
+    background-color: #7070c8;
     border-radius: 15px;
   }
 `;

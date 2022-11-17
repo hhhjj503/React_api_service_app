@@ -186,6 +186,21 @@ const App = () => {
       },
       []
     );
+    setChosenDistrics((prevState) => ({
+      ...prevState,
+      firstChosenDistrict: {
+        id: 0,
+        name: "",
+      },
+      secondChosenDistrict: {
+        id: 0,
+        name: "",
+      },
+      thirdChosenDistrict: {
+        id: 0,
+        name: "",
+      },
+    }));
     const prevClicked = sections.section1.filter(
       (item) => item.id === chosenDistrics.firstChosenDistrict.id
     );
@@ -224,6 +239,17 @@ const App = () => {
       ...sections,
       section3: [],
     });
+    setChosenDistrics((prevState) => ({
+      ...prevState,
+      secondChosenDistrict: {
+        id: 0,
+        name: "",
+      },
+      thirdChosenDistrict: {
+        id: 0,
+        name: "",
+      },
+    }));
     //데이터를 요청해 가져온뒤 지역2 state 를 이용해 조건에 맞는것만 배열 필터링
     const result = await axios.get("./secondDistricts.json").then((result) => {
       return result.data;
@@ -303,7 +329,6 @@ const App = () => {
       return;
     }
 
-    console.log("???");
     const result = await axios
       .get(
         "https://apis.data.go.kr/B552584/UlfptcaAlarmInqireSvc/getUlfptcaAlarmInfo?serviceKey=XHdBPXDvwDyK51xmj8Onfl76PpmSE%2FWvQxPvMt6ZZPCWoJYOMney38kmg%2Bto%2Bxp%2F7IXlQjS%2FQLcmSnnh%2BnsTmw%3D%3D&returnType=json&numOfRows=100&pageNo=1&year=2022&itemCode=PM10"
@@ -311,26 +336,36 @@ const App = () => {
       .then((result) => {
         return result.data.response.body;
       });
+
     const filteredDistricts = result.items.filter(
       (item) =>
         item.districtName === chosenDistrics.firstChosenDistrict.name &&
         item.moveName === chosenDistrics.secondChosenDistrict.name
     );
-    console.log(filteredDistricts);
-    setSections({
-      ...sections,
-      section4: filteredDistricts[0],
-    });
-    setFineDust({
-      districtName: sections.section4.districtName, //지역명
-      dataDate: sections.section4.dataDate, //발령일
-      issueVal: sections.section4.issueVal, //발령농도
-      issueTime: sections.section4.issueTime, //발령시간
-      moveName: sections.section4.moveName, //권역명
-      clearTime: sections.section4.clearTime, //해제시간
-      issueGbn: sections.section4.issueGbn, //경보단계
-    });
-    console.log(fineDust);
+    console.log("filteredDistricts :" + filteredDistricts);
+    console.log("filteredDistricts[0] :" + filteredDistricts[0]);
+
+    if (filteredDistricts[0] === undefined) {
+      setFineDust({
+        ...fineDust,
+        districtName: undefined,
+      });
+    } else {
+      setSections({
+        ...sections,
+        section4: filteredDistricts[0],
+      });
+      setFineDust({
+        ...fineDust,
+        districtName: sections.section4.districtName, //지역명
+        dataDate: sections.section4.dataDate, //발령일
+        issueVal: sections.section4.issueVal, //발령농도
+        issueTime: sections.section4.issueTime, //발령시간
+        moveName: sections.section4.moveName, //권역명
+        clearTime: sections.section4.clearTime, //해제시간
+        issueGbn: sections.section4.issueGbn, //경보단계
+      });
+    }
   };
 
   return (
@@ -345,7 +380,23 @@ const App = () => {
           backgroundColor={"transparent"}
           className="opacitied"
         >
-          {fineDust.districtName !== "" ? (
+          {fineDust.districtName === undefined ? (
+            <div
+              style={{
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%,-50%)",
+                zIndex: 2,
+                position: "absolute",
+                color: "white",
+                fontSize: "1.2rem",
+              }}
+            >
+              등록된 경보 정보가 없습니다
+              <br />
+              지역을 눌러 요청해 주세요
+            </div>
+          ) : (
             <>
               <h3
                 style={{
@@ -365,55 +416,53 @@ const App = () => {
                 <li>
                   지역명 :{" "}
                   <span style={{ fontWeight: "bold" }}>
-                    {sections.section4.districtName}
+                    {sections.section4.districtName === undefined
+                      ? ""
+                      : sections.section4.districtName}
                   </span>
                 </li>
                 <li>
                   권역명 :{" "}
                   <span style={{ fontWeight: "bold" }}>
-                    {sections.section4.moveName}
+                    {sections.section4.moveName === undefined
+                      ? ""
+                      : sections.section4.moveName}
                   </span>
                 </li>
                 <li>
                   발령일 :{" "}
                   <span style={{ fontWeight: "bold" }}>
-                    {sections.section4.dataDate}
+                    {sections.section4.dataDate === undefined
+                      ? ""
+                      : sections.section4.dataDate}
                   </span>
                 </li>
                 <li>
                   발령농도 :{" "}
                   <span style={{ fontWeight: "bold" }}>
-                    {sections.section4.issueVal}
+                    {sections.section4.issueVal === undefined
+                      ? ""
+                      : sections.section4.issueVal}
                   </span>
                 </li>
                 <li>
                   발령시간 :{" "}
                   <span style={{ fontWeight: "bold" }}>
-                    {sections.section4.issueTime}
+                    {sections.section4.issueTime === undefined
+                      ? ""
+                      : sections.section4.issueTime}
                   </span>
                 </li>
                 <li>
                   경보단계 :{" "}
                   <span style={{ fontWeight: "bold" }}>
-                    {sections.section4.issueGbn}
+                    {sections.section4.issueGbn === undefined
+                      ? ""
+                      : sections.section4.issueGbn}
                   </span>
                 </li>
               </ul>
             </>
-          ) : (
-            <div
-              style={{
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%,-50%)",
-                zIndex: 2,
-                position: "absolute",
-                color: "white",
-                fontSize: "1.2rem",
-              }}
-            >
-              지역을 선택해 주세요
-            </div>
           )}
         </Div>
         <Form>
