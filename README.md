@@ -8,19 +8,19 @@
 
 <hr />
 <br/>
-1. 사이트 접속시 기본 화면 입니다
+1. 사이트 접속시 기본 화면 입니다      
 useEffect 를 사용해 json 파일을 받아와 도시명 데이터만 화면에 출력합니다
 <img src="https://user-images.githubusercontent.com/69440128/202608342-41cd27c1-6071-4f9f-a78b-7011ea54f959.JPG" />
 <hr />
 
 <br/>
-2. 첫번째 항목을 선택시 세부 지역 데이터 json 파일을 axios 로 요청해 화면에 출력하며
+2. 첫번째 항목을 선택시 세부 지역 데이터 json 파일을 axios 로 요청해 화면에 출력하며      
 첫번째 선택한 항목 데이터 마다 출력되는 지역2, 지역3의 데이터는 서로 다릅니다
 <img src="https://user-images.githubusercontent.com/69440128/202608345-fec42d63-75cf-44ab-ae01-634da456cd04.JPG" />
 <hr />
 
 <br/>
-3. 지역3까지 데이터를 선택한뒤 확인하기 버튼을 누르면 각각의 지역 데이터를 저장한 state 를 이용해 최종 API 를 요청하고,
+3. 지역3까지 데이터를 선택한뒤 확인하기 버튼을 누르면 각각의 지역 데이터를 저장한 state 를 이용해 최종 API 를 요청하고,      
 각 지역에 해당하는 데이터만 filter 를 이용해 쿼리한 뒤 상단 회색박스란에 출력합니다
 <img src="https://user-images.githubusercontent.com/69440128/202608346-805a3285-71de-4600-aaba-cbbb78daa721.JPG" />
 <hr />
@@ -38,6 +38,6 @@ useEffect 를 사용해 json 파일을 받아와 도시명 데이터만 화면�
 
 <hr />
 <br/>
-구현환경 : windows   
-라이브러리 : React, Styled-Component, axios, npm, yarn   
-사용한 공공 API : 에어코리아 미세먼지 경보정보 API
+구현환경 : windows      
+라이브러리 : React, Styled-Component, axios, npm, yarn      
+사용한 공공 API : 에어코리아 미세먼지 경보정보 API     
