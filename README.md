@@ -38,6 +38,4 @@ useEffect 를 사용해 json 파일을 받아와 도시명 데이터만 화면�
 
 <hr />
 <br/>
-구현환경 : windows
-라이브러리 : React, Styled-Component, axios, npm, yarn
-사용한 공공 API : 에어코리아 미세먼지 경보정보 API
+구현환경 : windows   라이브러리 : React, Styled-Component, axios, npm, yarn   사용한 공공 API : 에어코리아 미세먼지 경보정보 API
