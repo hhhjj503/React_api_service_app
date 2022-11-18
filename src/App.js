@@ -151,13 +151,13 @@ const App = () => {
   );
 
   const [fineDust, setFineDust] = useState({
-    districtName: "",
-    dataDate: "",
-    issueVal: "",
-    issueTime: "",
-    moveName: "",
-    clearTime: "",
-    issueGbn: "",
+    districtName: undefined,
+    dataDate: undefined,
+    issueVal: undefined,
+    issueTime: undefined,
+    moveName: undefined,
+    clearTime: undefined,
+    issueGbn: undefined,
   });
 
   //첫화면 기본 요청데이터
