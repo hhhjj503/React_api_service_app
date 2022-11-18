@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# 미세먼지 경보정보 서비스
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+미세먼지 경보 발령이 발생한 기록을 제공받는 공공API를 이용한 서비스 입니다
+서버를 이용하지 않는 프로젝트이기 때문에 json 파일을 DB 로 이용해 axios 로 요청한 뒤 데이터를 받아옵니다
 
-## Available Scripts
+각 지역 섹션은 사용자의 편의를 위해 입력하는 방식보다는 공공API 문서내부의 지역 항목을 모두 json 으로 입력했으며
+지역 클릭시 클릭한 값을 state 로 관리합니다
 
-In the project directory, you can run:
+지역3 구역까지 선택한뒤 확인하기 버튼을 누르면 공공API 를 요청해 해당하는 데이터만 쿼리해 출력합니다
 
-### `npm start`
+<img src="https://user-images.githubusercontent.com/69440128/202608342-41cd27c1-6071-4f9f-a78b-7011ea54f959.JPG />
+사이트 접속시 기본 화면 입니다
+useEffect 를 사용해 json 파일을 받아와 도시명 데이터만 화면에 출력합니다
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<img src="https://user-images.githubusercontent.com/69440128/202608345-fec42d63-75cf-44ab-ae01-634da456cd04.JPG" />
+첫번째 항목을 선택시 세부 지역 데이터 json 파일을 axios 로 요청해 화면에 출력하며
+도시명 데이터 마다 출력되는 지역2 데이터를 서로 다릅니다
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+<img src="https://user-images.githubusercontent.com/69440128/202608346-805a3285-71de-4600-aaba-cbbb78daa721.JPG" />
+지역3까지 데이터를 선택한뒤 확인하기 버튼을 누르면 각각의 지역 데이터를 저장한 state 를 이용해 최종 API 를 요청하고
+각 지역에 해당하는 데이터만을 filter 를 이용해 하나의 데이터만을 상단에 출력합니다
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<img src="https://user-images.githubusercontent.com/69440128/202608348-0f783b09-c78b-41ce-91ba-2d2340cb7fdd.JPG" />
+최종 데이터 요청시 받아온 정보가 없을 경우에는 예외처리를 통해 화면에 데이터가 생성되지 않습니다
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img src="https://user-images.githubusercontent.com/69440128/202608337-d3803248-e575-423e-a7af-4e8aa048f374.JPG" />
+지역을 모두 선택하지 않았는데 확인버튼을 누를 경우 경우 alert 창으로 전송을 막습니다
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
