@@ -21,7 +21,7 @@ useEffect 를 사용해 json 파일을 받아와 지역1 데이터만 화면에 
 
 <br/>
 3. 지역3까지 데이터를 선택한뒤 확인하기 버튼을 누르면 각각의 지역 데이터를 저장한 state 를 이용해 최종 API 를 요청하고,<br/>
-각 지역에 해당하는 데이터만 filter 를 이용해 쿼리한 뒤 상단 회색박스란에 출력합니다
+선택한 지역에 해당하는 데이터만 filter 를 이용해 쿼리한 뒤 상단 회색박스란에 출력합니다
 <img src="https://user-images.githubusercontent.com/69440128/202608346-805a3285-71de-4600-aaba-cbbb78daa721.JPG" />
 <hr />
 
