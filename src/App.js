@@ -5,6 +5,7 @@ import axios from "axios";
 import LabelInput from "./components/LabelInput";
 import styled from "styled-components";
 import Fieldset from "./components/Fieldset";
+import apiKey from "./apiKey";
 
 const DivWrapper = styled.div`
   position: relative;
@@ -331,7 +332,7 @@ const App = () => {
 
     const result = await axios
       .get(
-        "https://apis.data.go.kr/B552584/UlfptcaAlarmInqireSvc/getUlfptcaAlarmInfo?serviceKey=XHdBPXDvwDyK51xmj8Onfl76PpmSE%2FWvQxPvMt6ZZPCWoJYOMney38kmg%2Bto%2Bxp%2F7IXlQjS%2FQLcmSnnh%2BnsTmw%3D%3D&returnType=json&numOfRows=100&pageNo=1&year=2022&itemCode=PM10"
+        `https://apis.data.go.kr/B552584/UlfptcaAlarmInqireSvc/getUlfptcaAlarmInfo?serviceKey=${apiKey}&returnType=json&numOfRows=100&pageNo=1&year=2022&itemCode=PM10`
       )
       .then((result) => {
         return result.data.response.body;
