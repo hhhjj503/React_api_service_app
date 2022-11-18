@@ -6,7 +6,7 @@
 각 지역 섹션은 사용자의 편의를 위해 입력하는 방식보다는 공공API 문서내부의 지역 항목을 모두 json 으로 입력했으며
 지역 클릭시 클릭한 값을 state 로 관리합니다
 
-
+<hr />
 1. 사이트 접속시 기본 화면 입니다
 useEffect 를 사용해 json 파일을 받아와 도시명 데이터만 화면에 출력합니다
 <img src="https://user-images.githubusercontent.com/69440128/202608342-41cd27c1-6071-4f9f-a78b-7011ea54f959.JPG" />
