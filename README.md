@@ -5,9 +5,10 @@
 
 따라서 각 지역 섹션은 사용자의 편의를 위해 직접 입력하는 방식보다는 공공API 문서 내부의 지역 항목을 모두 별도의 json 파일로 만들었고
 지역 클릭시 해당 파일을 요청해 관련된 값을 state 로 관리하며 최종 요청을 할 때만 공공API를 사용합니다
+
 <br/>
-지역 섹션을 통합 관리하는 state : sections , setSections
-선택한 지역을 통합 관리하는 state : chosenDistricts, setChosenDistrics
+지역 섹션을 통합 관리하는 state : sections , setSections<br/>
+선택한 지역을 통합 관리하는 state : chosenDistricts, setChosenDistrics<br/>
 최종으로 화면에 출력할 데이터를 관리하는 state : fineDust, setFineDust
 
 <hr />
