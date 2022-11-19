@@ -47,7 +47,10 @@ useEffect 를 사용해 json 파일을 받아와 지역1 데이터만 화면에 
 <br/>
 
 ### 기능실행
+데이터가 있는경우
 <img src="https://user-images.githubusercontent.com/69440128/202831264-e4047f7a-e22a-434a-a310-c0b47b9d0cdc.gif" />
+<br/>
+데이터가 없는경우
 <img src="https://user-images.githubusercontent.com/69440128/202831267-1e92dcd4-9650-423f-866a-af3421f68815.gif" />
 
 <hr />
