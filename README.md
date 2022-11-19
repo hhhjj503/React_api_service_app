@@ -35,6 +35,11 @@ useEffect 를 사용해 json 파일을 받아와 지역1 데이터만 화면에 
 <br/>
 5. 지역을 모두 선택하지 않았는데 확인버튼을 누를 경우 경우 alert 창으로 전송을 막습니다
 <img src="https://user-images.githubusercontent.com/69440128/202608337-d3803248-e575-423e-a7af-4e8aa048f374.JPG" />
+<br/>
+<br/>
+## 기능실행 gif
+<img src="https://user-images.githubusercontent.com/69440128/202831264-e4047f7a-e22a-434a-a310-c0b47b9d0cdc.gif" />
+<img src="https://user-images.githubusercontent.com/69440128/202831267-1e92dcd4-9650-423f-866a-af3421f68815.gif" />
 
 <hr />
 <br/>
