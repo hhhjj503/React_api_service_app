@@ -37,7 +37,8 @@ useEffect 를 사용해 json 파일을 받아와 지역1 데이터만 화면에 
 <img src="https://user-images.githubusercontent.com/69440128/202608337-d3803248-e575-423e-a7af-4e8aa048f374.JPG" />
 <br/>
 <br/>
-## 기능실행 gif
+
+# 기능실행 gif
 <img src="https://user-images.githubusercontent.com/69440128/202831264-e4047f7a-e22a-434a-a310-c0b47b9d0cdc.gif" />
 <img src="https://user-images.githubusercontent.com/69440128/202831267-1e92dcd4-9650-423f-866a-af3421f68815.gif" />
 
