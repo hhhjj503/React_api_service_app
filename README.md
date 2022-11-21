@@ -41,7 +41,7 @@ useEffect 를 사용해 json 파일을 받아와 지역1 데이터만 화면에 
 
 
 <br/>
-5. 지역을 모두 선택하지 않았는데 확인버튼을 누를 경우 경우 alert 창으로 전송을 막습니다
+5. 지역을 모두 선택하지 않았는데 확인버튼을 누를 경우 alert 창으로 전송을 막습니다
 <img src="https://user-images.githubusercontent.com/69440128/202608337-d3803248-e575-423e-a7af-4e8aa048f374.JPG" />
 <br/>
 <br/>
