@@ -15,6 +15,7 @@ action 의 type 은 상수로 선언한뒤 메서드를 이용해 dispatch 의 t
 ex )<br/>
 const UPDATE_FINEDUST = "UPDATE/FINEDUST";
 <br/>
+<br/>
 export const updateFineDust = (fineDust) => ({<br/>
   type: UPDATE_FINEDUST,<br/>
   fineDust,<br/>
