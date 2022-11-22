@@ -7,9 +7,16 @@
 지역 클릭시 해당 파일을 요청해 관련된 값을 state 로 관리하며 최종 요청을 할 때만 공공API를 사용합니다
 
 <br/>
-지역 섹션을 통합 관리하는 state : sections , setSections<br/>
-선택한 지역을 통합 관리하는 state : chosenDistricts, setChosenDistrics<br/>
-최종으로 화면에 출력할 데이터를 관리하는 state : fineDust, setFineDust
+각 state 는 Redux 를 사용하여 전역관리합니다<br/>
+action 의 type 은 상수로 선언한뒤 메서드를 이용해 dispatch 의 type 값으로 자동입력되며
+상수를 직접 사용하지는 않습니다
+<br/>
+ex)<br/>
+const UPDATE_FINEDUST = "UPDATE/FINEDUST";<br/>
+export const updateFineDust = (fineDust) => ({<br/>
+  type: UPDATE_FINEDUST,<br/>
+  fineDust,<br/>
+});<br/>
 
 <hr />
 <br/>
@@ -60,5 +67,5 @@ useEffect 를 사용해 json 파일을 받아와 지역1 데이터만 화면에 
 ### 구현환경
 
 OS : windows<br/>
-라이브러리 : React, Styled-Component, axios<br/>
+라이브러리 : React, Styled-Component, axios, Redux<br/>
 사용한 공공 API : 에어코리아 미세먼지 경보정보 API     
