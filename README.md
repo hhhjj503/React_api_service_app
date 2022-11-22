@@ -23,6 +23,8 @@ export const updateFineDust = (fineDust) => ({<br/>
   fineDust,<br/>
 });
 <br/>
+dispatch(updateFineDust(fineDust))
+<br/>
 <hr />
 <br/>
 
