@@ -6,25 +6,6 @@ import LabelInput from "./components/LabelInput";
 import styled from "styled-components";
 import Fieldset from "./components/Fieldset";
 import apiKey from "./apiKey";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  updateSection1,
-  deleteSection1,
-  updateSection2,
-  deleteSection2,
-  updateSection3,
-  deleteSection3,
-  updateSection4,
-} from "./reducers/sections";
-import {
-  updateFirstChosenDistrict,
-  deleteFirstChosenDistrict,
-  updateSecondChosenDistrict,
-  deleteSecondChosenDistrict,
-  updateThirdChosenDistrict,
-  deleteThirdChosenDistrict,
-} from "./reducers/chosenDistricts";
-import { updateFineDust, deleteFineDust } from "./reducers/fineDust";
 
 const DivWrapper = styled.div`
   position: relative;
@@ -107,96 +88,181 @@ const Button = styled.button`
 `;
 
 const App = () => {
-  const sections = useSelector((state) => state.sections);
-  const chosenDistricts = useSelector((state) => state.chosenDistricts);
-  const fineDust = useSelector((state) => state.fineDust);
-  const dispatch = useDispatch();
+  //선택된 지역에 대한 정보를 저장
+  const [chosenDistrics, setChosenDistrics] = useState(
+    {
+      firstChosenDistrict: {
+        id: 0,
+        name: "",
+      },
+      secondChosenDistrict: {
+        id: 0,
+        name: "",
+      },
+      thirdChosenDistrict: {
+        id: 0,
+        name: "",
+      },
+    },
+    []
+  );
+  //각 지역을 출력할 배열을 저장
+  const [sections, setSections] = useState(
+    {
+      section1: [],
+      section2: [],
+      section3: [],
+      section4: [],
+    },
+    []
+  );
+
+  const [fineDust, setFineDust] = useState({
+    districtName: undefined,
+    dataDate: undefined,
+    issueVal: undefined,
+    issueTime: undefined,
+    moveName: undefined,
+    clearTime: undefined,
+    issueGbn: undefined,
+  });
 
   //첫화면 기본 요청데이터
   useEffect(() => {
     async function fetchData() {
-      const result = await axios
-        .get("./firstDistricts.json")
-        .then((response) => {
-          return response.data;
-        });
-      dispatch(updateSection1(result));
+      const result = await axios.get("./firstDistricts.json");
+      setSections(
+        {
+          ...sections,
+          section1: result.data,
+        },
+        []
+      );
     }
     fetchData();
-  }, [dispatch]);
+  }, []);
 
   //지역1 클릭
   async function getFirstDistrict(e) {
     //지역2와 지역3의 배열 초기화
-    dispatch(deleteSection2());
-    dispatch(deleteSection3());
-    dispatch(deleteFirstChosenDistrict());
-    dispatch(deleteSecondChosenDistrict());
-    dispatch(deleteThirdChosenDistrict());
+    setSections(
+      {
+        ...sections,
+        section2: [],
+        section3: [],
+      },
+      []
+    );
+    setChosenDistrics((prevState) => ({
+      ...prevState,
+      firstChosenDistrict: {
+        id: 0,
+        name: "",
+      },
+      secondChosenDistrict: {
+        id: 0,
+        name: "",
+      },
+      thirdChosenDistrict: {
+        id: 0,
+        name: "",
+      },
+    }));
+    const prevClicked = sections.section1.filter(
+      (item) => item.id === chosenDistrics.firstChosenDistrict.id
+    );
+    console.log(chosenDistrics.firstChosenDistrict.id);
+    console.log(prevClicked);
     //지역2를 요청해 가져온뒤 지역1 state 를 이용해 조건에 맞는것만 배열 필터링
     const result = await axios.get("./secondDistricts.json").then((result) => {
       return result.data;
     });
     //지역1 관련 state 저장
-    dispatch(
-      updateFirstChosenDistrict(
-        e.target.getAttribute("id"),
-        e.target.getAttribute("name")
-      )
-    );
+    setChosenDistrics((prevState) => ({
+      ...prevState,
+      firstChosenDistrict: {
+        ...chosenDistrics.firstChosenDistrict,
+        id: e.target.getAttribute("id"),
+        name: e.target.getAttribute("name"),
+      },
+    }));
     const filteredDistricts = result.filter(
       (item) => item.name === e.target.getAttribute("name")
     );
+    console.log(chosenDistrics.firstChosenDistrict.id);
     //필터링된 지역2 배열을 저장
-    dispatch(updateSection2(filteredDistricts));
+    setSections({
+      ...sections,
+      section2: filteredDistricts,
+      section3: [],
+    });
     changeBackColor(1, e);
   }
 
   //지역2 클릭
   async function getSecondDistrict(e) {
-    //지역3 배열과  선택한 지역3 초기화
-    dispatch(deleteSection3());
-    dispatch(deleteThirdChosenDistrict());
-
-    //지역2 관련 state 저장
-    dispatch(
-      updateSecondChosenDistrict(
-        e.target.getAttribute("id"),
-        e.target.getAttribute("name")
-      )
-    );
-
+    //지역3 배열을 초기화
+    setSections({
+      ...sections,
+      section3: [],
+    });
+    setChosenDistrics((prevState) => ({
+      ...prevState,
+      secondChosenDistrict: {
+        id: 0,
+        name: "",
+      },
+      thirdChosenDistrict: {
+        id: 0,
+        name: "",
+      },
+    }));
     //데이터를 요청해 가져온뒤 지역2 state 를 이용해 조건에 맞는것만 배열 필터링
     const result = await axios.get("./secondDistricts.json").then((result) => {
       return result.data;
     });
+    //지역2 관련 state 저장
+    setChosenDistrics((prevState) => ({
+      ...prevState,
+      secondChosenDistrict: {
+        ...prevState.secondChosenDistrict,
+        id: e.target.getAttribute("id"),
+        name: e.target.getAttribute("name"),
+      },
+    }));
     const filteredDistricts = result.filter(
       (item) =>
-        item.name === chosenDistricts.firstChosenDistrict.name &&
+        item.name === chosenDistrics.firstChosenDistrict.name &&
         item.subName === e.target.getAttribute("name")
     );
-
+    //
     const doubleFilteredDistricts = [];
     filteredDistricts.forEach((item) => {
       item.subDistricts.forEach((item) => {
         doubleFilteredDistricts.push(item);
       });
     });
-    dispatch(updateSection3(doubleFilteredDistricts));
+    //
+    setSections({
+      ...sections,
+      section3: doubleFilteredDistricts,
+    });
     changeBackColor(2, e);
   }
 
   //지역3 클릭시
   async function getThirdDistrict(e) {
-    dispatch(
-      updateThirdChosenDistrict(
-        e.target.getAttribute("id"),
-        e.target.getAttribute("name")
-      )
-    );
-    console.log("first : " + chosenDistricts.firstChosenDistrict.name);
-    console.log("second : " + chosenDistricts.secondChosenDistrict.name);
-    console.log("third : " + chosenDistricts.thirdChosenDistrict.name);
+    setChosenDistrics((prevState) => ({
+      ...prevState,
+      thirdChosenDistrict: {
+        ...prevState.thirdChosenDistrict,
+        id: e.target.getAttribute("id"),
+        name: e.target.getAttribute("name"),
+      },
+    }));
+    console.log("first : " + chosenDistrics.firstChosenDistrict.name);
+    console.log("second : " + chosenDistrics.secondChosenDistrict.name);
+    console.log("third : " + chosenDistrics.thirdChosenDistrict.name);
     changeBackColor(3, e);
   }
 
@@ -222,9 +288,9 @@ const App = () => {
     e.preventDefault();
 
     if (
-      chosenDistricts.firstChosenDistrict.id === 0 ||
-      chosenDistricts.secondChosenDistrict.id === 0 ||
-      chosenDistricts.thirdChosenDistrict.id === 0
+      chosenDistrics.firstChosenDistrict.id === 0 ||
+      chosenDistrics.secondChosenDistrict.id === 0 ||
+      chosenDistrics.thirdChosenDistrict.id === 0
     ) {
       alert("지역을 모두 선택해 주세요");
       return;
@@ -240,26 +306,24 @@ const App = () => {
 
     const filteredDistricts = result.items.filter(
       (item) =>
-        item.districtName === chosenDistricts.firstChosenDistrict.name &&
-        item.moveName === chosenDistricts.secondChosenDistrict.name
+        item.districtName === chosenDistrics.firstChosenDistrict.name &&
+        item.moveName === chosenDistrics.secondChosenDistrict.name
     );
     console.log("filteredDistricts :" + filteredDistricts);
     console.log("filteredDistricts[0] :" + filteredDistricts[0]);
 
     if (filteredDistricts[0] === undefined) {
-      const fineDust = {
-        districtName: undefined, //지역명
-        dataDate: undefined, //발령일
-        issueVal: undefined, //발령농도
-        issueTime: undefined, //발령시간
-        moveName: undefined, //권역명
-        clearTime: undefined, //해제시간
-        issueGbn: undefined, //경보단계
-      };
-      dispatch(updateFineDust(fineDust));
+      setFineDust({
+        ...fineDust,
+        districtName: undefined,
+      });
     } else {
-      dispatch(updateSection4(filteredDistricts[0]));
-      const fineDust = {
+      setSections({
+        ...sections,
+        section4: filteredDistricts[0],
+      });
+      setFineDust({
+        ...fineDust,
         districtName: sections.section4.districtName, //지역명
         dataDate: sections.section4.dataDate, //발령일
         issueVal: sections.section4.issueVal, //발령농도
@@ -267,8 +331,7 @@ const App = () => {
         moveName: sections.section4.moveName, //권역명
         clearTime: sections.section4.clearTime, //해제시간
         issueGbn: sections.section4.issueGbn, //경보단계
-      };
-      dispatch(updateFineDust(fineDust));
+      });
     }
   };
 
