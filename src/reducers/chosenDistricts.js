@@ -1,5 +1,3 @@
-import React from "react";
-
 //
 //type 정의
 const UPDATE_FIRSTCHOSENDISTRICT = "UPDATE/FIRSTCHOSENDISTRICT";

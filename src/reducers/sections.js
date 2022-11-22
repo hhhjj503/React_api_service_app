@@ -1,5 +1,3 @@
-import React from "react";
-
 //
 //type 정의
 const UPDATE_SECTION1 = "UPDATE/SECTION1";

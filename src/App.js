@@ -1,6 +1,6 @@
 import "./App.css";
 import { Reset } from "styled-reset";
-import { useEffect, useReducer, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import LabelInput from "./components/LabelInput";
 import styled from "styled-components";
