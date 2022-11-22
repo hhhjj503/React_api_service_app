@@ -11,13 +11,14 @@
 action 의 type 은 상수로 선언한뒤 메서드를 이용해 dispatch 의 type 값으로 자동입력되며
 상수를 직접 사용하지는 않습니다
 <br/>
-ex)<br/>
+<br/>
+ex )<br/>
 const UPDATE_FINEDUST = "UPDATE/FINEDUST";<br/>
 export const updateFineDust = (fineDust) => ({<br/>
   type: UPDATE_FINEDUST,<br/>
   fineDust,<br/>
-});<br/>
-
+});
+<br/>
 <hr />
 <br/>
 
