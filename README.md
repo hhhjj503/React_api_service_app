@@ -75,5 +75,5 @@ useEffect 를 사용해 json 파일을 받아와 지역1 데이터만 화면에 
 ### 구현환경
 
 OS : windows<br/>
-라이브러리 : React, Styled-Component, axios, Redux<br/>
+라이브러리 : React, Typescript, Styled-Component, axios, Redux<br/>
 사용한 공공 API : 에어코리아 미세먼지 경보정보 API     
