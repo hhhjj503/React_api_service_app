@@ -15,10 +15,10 @@ action 의 type 은 상수로 선언한뒤 메서드를 이용해 dispatch 의 t
 <br/>
 <br/>
 ex )<br/>
-const UPDATE_FINEDUST = "UPDATE/FINEDUST";
+const UPDATE_FINEDUST: string = "UPDATE/FINEDUST";
 <br/>
 <br/>
-export const updateFineDust = (fineDust) => ({<br/>
+export const updateFineDust = (fineDust : FineDust) => ({<br/>
   type: UPDATE_FINEDUST,<br/>
   fineDust,<br/>
 });
